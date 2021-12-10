@@ -11,7 +11,7 @@ public class TraversalWithoiutRecursion {
         System.out.println("[1]POSTORDER TRAVERSAL USING TWO STACK\n"+
                 "[2]POSTORDER TRAVERSAL USING ONE STACK\n"+
                 "[3]INORDER TRAVERSAL\n"+
-        "[4]PREORDER TRAVERSAL\n"+
+                "[4]PREORDER TRAVERSAL\n"+
                 "[5]EXIT");
         node11 tree1=new node11();
         tree1.root=new node11(5);
