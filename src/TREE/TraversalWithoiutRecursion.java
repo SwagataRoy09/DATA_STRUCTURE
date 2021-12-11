@@ -8,11 +8,12 @@ import java.util.Stack;
 public class TraversalWithoiutRecursion {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("[1]POSTORDER TRAVERSAL USING TWO STACK\n"+
-                "[2]POSTORDER TRAVERSAL USING ONE STACK\n"+
-                "[3]INORDER TRAVERSAL\n"+
-                "[4]PREORDER TRAVERSAL\n"+
-                "[5]EXIT");
+       System.out.println("[1]POSTORDER TRAVERSAL USING TWO STACK\n"+
+                           "[2]POSTORDER TRAVERSAL USING ONE STACK\n"+
+                           "[3]LEVEL ORDER TRAVERSAL\n"+
+                           "[4]INORDER TRAVERSAL\n"+
+                           "[5]PREORDER TRAVERSAL\n"+
+                           "[6]EXIT");
         node11 tree1=new node11();
         tree1.root=new node11(5);
         tree1.root.left=new node11(4);
@@ -31,16 +32,16 @@ public class TraversalWithoiutRecursion {
  */
 
 
-        while (true){
+     while (true){
             System.out.println("ENTER YOUR CHOICE");
             int choice=sc.nextInt();
             switch (choice){
-                case 3->
+                case 4->
                         {
                             System.out.println("INORDER TRAVERSAL IS");
                            tree1.inorder();
                         }
-                case 4->{
+                case 5->{
                     System.out.println("PREORDER TRAVERSAL IS");
                     tree1.preorder();
                 }
@@ -48,12 +49,15 @@ public class TraversalWithoiutRecursion {
                     System.out.println("POSTORDER TRAVERSAL IS  :");
                     tree1.postorder();
                 }
-                case 2->
-                        {
-                            System.out.println("POSTORDER TRAVERSAL IS : ");
-                            System.out.println(tree1.postorderSingleStack());
-                        }
-                case 5->System.exit(0);
+                case 2-> {
+                    System.out.println("POSTORDER TRAVERSAL IS : ");
+                    System.out.println(tree1.postorderSingleStack());
+                }
+                case 3-> {
+                    System.out.printf("LEVEL ORDER TRAVERSAL IS : ");
+                    tree1.levelOrder();
+                                }
+                case 6->System.exit(0);
             }
         }
     }
@@ -160,5 +164,29 @@ class node11{
             }
         }
         return list3;
+    }
+    
+    
+    void levelOrder(){
+        Queue<node11> q = new LinkedList<>();
+        ArrayList<ArrayList<Integer>> list4 = new ArrayList<ArrayList<Integer>>();
+
+        q.add(root);
+        while (!q.isEmpty()) {
+            ArrayList<Integer> sub=new ArrayList<>();
+            int n=q.size();
+            for (int i = 0; i < n; i++) {
+                node11 curr = q.poll();
+                sub.add(curr.data);
+                if (curr.left != null) {
+                    q.add(curr.left);
+                }
+                if (curr.right != null) {
+                    q.add(curr.right);
+                }
+            }
+            list4.add(sub);
+        }
+        System.out.println(list4);
     }
 }
